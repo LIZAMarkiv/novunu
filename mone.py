@@ -1,10 +1,13 @@
+import requests
 from PyQt6.QtWidgets import*
+from zaput import*
 def pokaz_novun():
     window = QDialog()
     mainline = QVBoxLayout()
+    v1 = QVBoxLayout()
     h1 = QHBoxLayout()
     h2 = QHBoxLayout()
-    lab = QLabel("Якого часу новини?(години,хвилини)")
+    lab = QLabel("Якого часу новини?(години = число,хвилини = число хв)")
     tex = QLineEdit()
     lab2 = QLabel("Новини якого регіону? (писати: ua,us...)")
     tex2 = QLineEdit()
@@ -14,6 +17,7 @@ def pokaz_novun():
     gb = QLabel("Великрбританія (gb)")
     br = QLabel("Бразилія (br)")
     fr = QLabel("Франія (fr)")
+    k1 = QPushButton("Далі")
     mainline.addWidget(lab)
     mainline.addWidget(tex)
     mainline.addWidget(lab2)
@@ -24,9 +28,12 @@ def pokaz_novun():
     h2.addWidget(gb)
     h2.addWidget(br)
     h2.addWidget(fr)
+    v1.addWidget(k1)
+    h2.addLayout(v1)
     mainline.addLayout(h1)
     mainline.addLayout(h2)
 
+    k1.clicked.connect(novun)
     window.setLayout(mainline)
     window.show()
     window.exec()
