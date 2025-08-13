@@ -1,7 +1,7 @@
 import requests
 from PyQt6.QtWidgets import*
 from zaput import*
-def pokaz_novun():
+def pokaz_novun(category = ""):
     window = QDialog()
     mainline = QVBoxLayout()
     v1 = QVBoxLayout()
@@ -33,7 +33,7 @@ def pokaz_novun():
     mainline.addLayout(h1)
     mainline.addLayout(h2)
 
-    k1.clicked.connect(novun)
+    k1.clicked.connect(lambda _,cat=category: novun(category=cat, country=tex2.text(), timeframe=tex.text()))
     window.setLayout(mainline)
     window.show()
     window.exec()
